@@ -1,4 +1,3 @@
-# -*- encondig: utf-8 -*-
 
 import ply.lex as lex
 import os
@@ -8,21 +7,21 @@ tokens = (
 
     # Palabras Reservadas
     'COUT',
-    'CIN',
-    'ENDL',
-    'ELSE',
-    'IF',
+    #'CIN',
+    #'ENDL',
+    #'ELSE',
+    #'IF',
     'INT',
-    'STRING',
-    'WHILE',
-    'FOR',
+    #'STRING',
+    #'WHILE',
+    #'FOR',
 
     # Symbolos
-    'POINT',
+    #'POINT',
     'PLUS',
-    'PLUSPLUS',
+    #'PLUSPLUS',
     'MINUS',
-    'MINUSMINUS',
+    #'MINUSMINUS',
     'TIMES',
     'DIVIDE',
     'LESS',
@@ -206,7 +205,7 @@ if __name__ == '__main__':
     #la variable data para despues enviarla al analizador lexico para que la
     #descomponga en tokes
 
-    f = open('fuente/hola.lopez')
+    f = open('fuente/test.lopez')
     data = f.read()
     f.close()
     #Build lexer and try on
