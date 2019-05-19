@@ -206,7 +206,7 @@ if __name__ == '__main__':
     #la variable data para despues enviarla al analizador lexico para que la
     #descomponga en tokes
 
-    f = open('fuente/c.cpp')
+    f = open('fuente/hola.lopez')
     data = f.read()
     f.close()
     #Build lexer and try on
