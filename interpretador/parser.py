@@ -12,7 +12,7 @@ names = {}
 precedence = (
     ('left', "PLUS", "MINUS"),
     ('left', "TIMES", "DIVIDE"),
-    ('right', 'TIMES'),
+    ('right', 'UMINUS'),
 )
 
 def p_statement_assign(p):
@@ -28,18 +28,18 @@ def p_expression_binop(p):
                       | expression MINUS expression
                       | expression TIMES expression
                       | expression DIVIDE expression'''
-    if p[2] == "PLUS":
+    if p[2] == "+":
         p[0] = p[1] + p[3]
-    elif p[2] == "MINUS":
+    elif p[2] == "-":
         p[0] = p[1] - p[3]
-    elif p[2] == "TIMES":
+    elif p[2] == "*":
         p[0] = p[1] * p[3]
-    elif p[2] == "DIVIDE":
+    elif p[2] == "/":
         p[0] = p[1] / p[3]
 
-#def p_expression_uminus(p):
- #   'expression : MINUS expression %prec UMINUS '
-  #  p[0] = -P[2]
+def p_expression_uminus(p):
+    'expression : MINUS expression %prec UMINUS'
+    p[0] = -p[2]
 
 def p_expression_group(p):
     "expression : '(' expression ')'"

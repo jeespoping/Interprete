@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = "leftPLUSMINUSleftTIMESDIVIDErightTIMESCIN COMMA COUT DEQUAL DISTINT DIVIDE ELSE ENDL EQUAL FOR GREATER GREATEREQUAL ID IF INT LBLOCK LBRACKET LESS LESSEQUAL LPAREN MINUS MINUSMINUS NUMBER PLUS PLUSPLUS POINT QUOTES RBLOCK RBRACKET RPAREN SEMICOLON STRING TIMES WHILEstatement : INT ID EQUAL expression SEMICOLONstatement : COUT expression SEMICOLONexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expressionexpression : '(' expression ')'expression : NUMBERexpression : ID"
+_lr_signature = "leftPLUSMINUSleftTIMESDIVIDErightUMINUSCIN COMMA COUT DEQUAL DISTINT DIVIDE ELSE ENDL EQUAL FOR GREATER GREATEREQUAL ID IF INT LBLOCK LBRACKET LESS LESSEQUAL LPAREN MINUS MINUSMINUS NUMBER PLUS PLUSPLUS POINT QUOTES RBLOCK RBRACKET RPAREN SEMICOLON STRING TIMES WHILEstatement : INT ID EQUAL expression SEMICOLONstatement : COUT expression SEMICOLONexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expressionexpression : MINUS expression %prec UMINUSexpression : '(' expression ')'expression : NUMBERexpression : ID"
     
-_lr_action_items = {'INT':([0,],[2,]),'COUT':([0,],[3,]),'$end':([1,10,22,],[0,-2,-1,]),'ID':([2,3,6,9,11,12,13,14,],[4,8,8,8,8,8,8,8,]),'(':([3,6,9,11,12,13,14,],[6,6,6,6,6,6,6,]),'NUMBER':([3,6,9,11,12,13,14,],[7,7,7,7,7,7,7,]),'EQUAL':([4,],[9,]),'SEMICOLON':([5,7,8,16,17,18,19,20,21,],[10,-8,-9,22,-3,-4,-5,-6,-7,]),'PLUS':([5,7,8,15,16,17,18,19,20,21,],[11,-8,-9,11,11,-3,-4,-5,-6,-7,]),'MINUS':([5,7,8,15,16,17,18,19,20,21,],[12,-8,-9,12,12,-3,-4,-5,-6,-7,]),'TIMES':([5,7,8,15,16,17,18,19,20,21,],[13,-8,-9,13,13,13,13,-5,-6,-7,]),'DIVIDE':([5,7,8,15,16,17,18,19,20,21,],[14,-8,-9,14,14,14,14,-5,-6,-7,]),')':([7,8,15,17,18,19,20,21,],[-8,-9,21,-3,-4,-5,-6,-7,]),}
+_lr_action_items = {'INT':([0,],[2,]),'COUT':([0,],[3,]),'$end':([1,11,24,],[0,-2,-1,]),'ID':([2,3,6,7,10,12,13,14,15,],[4,9,9,9,9,9,9,9,9,]),'MINUS':([3,5,6,7,8,9,10,12,13,14,15,16,17,18,19,20,21,22,23,],[6,13,6,6,-9,-10,6,6,6,6,6,-7,13,13,-3,-4,-5,-6,-8,]),'(':([3,6,7,10,12,13,14,15,],[7,7,7,7,7,7,7,7,]),'NUMBER':([3,6,7,10,12,13,14,15,],[8,8,8,8,8,8,8,8,]),'EQUAL':([4,],[10,]),'SEMICOLON':([5,8,9,16,18,19,20,21,22,23,],[11,-9,-10,-7,24,-3,-4,-5,-6,-8,]),'PLUS':([5,8,9,16,17,18,19,20,21,22,23,],[12,-9,-10,-7,12,12,-3,-4,-5,-6,-8,]),'TIMES':([5,8,9,16,17,18,19,20,21,22,23,],[14,-9,-10,-7,14,14,14,14,-5,-6,-8,]),'DIVIDE':([5,8,9,16,17,18,19,20,21,22,23,],[15,-9,-10,-7,15,15,15,15,-5,-6,-8,]),')':([8,9,16,17,19,20,21,22,23,],[-9,-10,-7,23,-3,-4,-5,-6,-8,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'statement':([0,],[1,]),'expression':([3,6,9,11,12,13,14,],[5,15,16,17,18,19,20,]),}
+_lr_goto_items = {'statement':([0,],[1,]),'expression':([3,6,7,10,12,13,14,15,],[5,16,17,18,19,20,21,22,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -33,6 +33,7 @@ _lr_productions = [
   ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',28),
   ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',29),
   ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',30),
+  ('expression -> MINUS expression','expression',2,'p_expression_uminus','parser.py',41),
   ('expression -> ( expression )','expression',3,'p_expression_group','parser.py',45),
   ('expression -> NUMBER','expression',1,'p_expression_number','parser.py',49),
   ('expression -> ID','expression',1,'p_expression_id','parser.py',53),
