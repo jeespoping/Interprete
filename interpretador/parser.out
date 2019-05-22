@@ -36,14 +36,15 @@ Rule 3     expression -> expression PLUS expression
 Rule 4     expression -> expression MINUS expression
 Rule 5     expression -> expression TIMES expression
 Rule 6     expression -> expression DIVIDE expression
-Rule 7     expression -> ( expression )
-Rule 8     expression -> NUMBER
-Rule 9     expression -> ID
+Rule 7     expression -> MINUS expression
+Rule 8     expression -> ( expression )
+Rule 9     expression -> NUMBER
+Rule 10    expression -> ID
 
 Terminals, with rules where they appear
 
-(                    : 7
-)                    : 7
+(                    : 8
+)                    : 8
 CIN                  : 
 COMMA                : 
 COUT                 : 2
@@ -56,7 +57,7 @@ EQUAL                : 1
 FOR                  : 
 GREATER              : 
 GREATEREQUAL         : 
-ID                   : 1 9
+ID                   : 1 10
 IF                   : 
 INT                  : 1
 LBLOCK               : 
@@ -64,9 +65,9 @@ LBRACKET             :
 LESS                 : 
 LESSEQUAL            : 
 LPAREN               : 
-MINUS                : 4
+MINUS                : 4 7
 MINUSMINUS           : 
-NUMBER               : 8
+NUMBER               : 9
 PLUS                 : 3
 PLUSPLUS             : 
 POINT                : 
@@ -82,7 +83,7 @@ error                :
 
 Nonterminals, with rules where they appear
 
-expression           : 1 2 3 3 4 4 5 5 6 6 7
+expression           : 1 2 3 3 4 4 5 5 6 6 7 8
 statement            : 0
 
 Parsing method: LALR
@@ -118,13 +119,15 @@ state 3
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
     expression                     shift and go to state 5
 
@@ -132,7 +135,7 @@ state 4
 
     (1) statement -> INT ID . EQUAL expression SEMICOLON
 
-    EQUAL           shift and go to state 9
+    EQUAL           shift and go to state 10
 
 
 state 5
@@ -143,162 +146,214 @@ state 5
     (5) expression -> expression . TIMES expression
     (6) expression -> expression . DIVIDE expression
 
-    SEMICOLON       shift and go to state 10
-    PLUS            shift and go to state 11
-    MINUS           shift and go to state 12
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    SEMICOLON       shift and go to state 11
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    TIMES           shift and go to state 14
+    DIVIDE          shift and go to state 15
 
 
 state 6
 
-    (7) expression -> ( . expression )
+    (7) expression -> MINUS . expression
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 15
+    expression                     shift and go to state 16
 
 state 7
 
-    (8) expression -> NUMBER .
+    (8) expression -> ( . expression )
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    SEMICOLON       reduce using rule 8 (expression -> NUMBER .)
-    PLUS            reduce using rule 8 (expression -> NUMBER .)
-    MINUS           reduce using rule 8 (expression -> NUMBER .)
-    TIMES           reduce using rule 8 (expression -> NUMBER .)
-    DIVIDE          reduce using rule 8 (expression -> NUMBER .)
-    )               reduce using rule 8 (expression -> NUMBER .)
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
+    expression                     shift and go to state 17
 
 state 8
 
-    (9) expression -> ID .
+    (9) expression -> NUMBER .
 
-    SEMICOLON       reduce using rule 9 (expression -> ID .)
-    PLUS            reduce using rule 9 (expression -> ID .)
-    MINUS           reduce using rule 9 (expression -> ID .)
-    TIMES           reduce using rule 9 (expression -> ID .)
-    DIVIDE          reduce using rule 9 (expression -> ID .)
-    )               reduce using rule 9 (expression -> ID .)
+    SEMICOLON       reduce using rule 9 (expression -> NUMBER .)
+    PLUS            reduce using rule 9 (expression -> NUMBER .)
+    MINUS           reduce using rule 9 (expression -> NUMBER .)
+    TIMES           reduce using rule 9 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 9 (expression -> NUMBER .)
+    )               reduce using rule 9 (expression -> NUMBER .)
 
 
 state 9
+
+    (10) expression -> ID .
+
+    SEMICOLON       reduce using rule 10 (expression -> ID .)
+    PLUS            reduce using rule 10 (expression -> ID .)
+    MINUS           reduce using rule 10 (expression -> ID .)
+    TIMES           reduce using rule 10 (expression -> ID .)
+    DIVIDE          reduce using rule 10 (expression -> ID .)
+    )               reduce using rule 10 (expression -> ID .)
+
+
+state 10
 
     (1) statement -> INT ID EQUAL . expression SEMICOLON
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 16
+    expression                     shift and go to state 18
 
-state 10
+state 11
 
     (2) statement -> COUT expression SEMICOLON .
 
     $end            reduce using rule 2 (statement -> COUT expression SEMICOLON .)
 
 
-state 11
+state 12
 
     (3) expression -> expression PLUS . expression
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 17
+    expression                     shift and go to state 19
 
-state 12
+state 13
 
     (4) expression -> expression MINUS . expression
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 18
+    expression                     shift and go to state 20
 
-state 13
+state 14
 
     (5) expression -> expression TIMES . expression
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 19
+    expression                     shift and go to state 21
 
-state 14
+state 15
 
     (6) expression -> expression DIVIDE . expression
     (3) expression -> . expression PLUS expression
     (4) expression -> . expression MINUS expression
     (5) expression -> . expression TIMES expression
     (6) expression -> . expression DIVIDE expression
-    (7) expression -> . ( expression )
-    (8) expression -> . NUMBER
-    (9) expression -> . ID
+    (7) expression -> . MINUS expression
+    (8) expression -> . ( expression )
+    (9) expression -> . NUMBER
+    (10) expression -> . ID
 
-    (               shift and go to state 6
-    NUMBER          shift and go to state 7
-    ID              shift and go to state 8
+    MINUS           shift and go to state 6
+    (               shift and go to state 7
+    NUMBER          shift and go to state 8
+    ID              shift and go to state 9
 
-    expression                     shift and go to state 20
+    expression                     shift and go to state 22
 
-state 15
+state 16
 
-    (7) expression -> ( expression . )
+    (7) expression -> MINUS expression .
     (3) expression -> expression . PLUS expression
     (4) expression -> expression . MINUS expression
     (5) expression -> expression . TIMES expression
     (6) expression -> expression . DIVIDE expression
 
-    )               shift and go to state 21
-    PLUS            shift and go to state 11
-    MINUS           shift and go to state 12
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    SEMICOLON       reduce using rule 7 (expression -> MINUS expression .)
+    PLUS            reduce using rule 7 (expression -> MINUS expression .)
+    MINUS           reduce using rule 7 (expression -> MINUS expression .)
+    TIMES           reduce using rule 7 (expression -> MINUS expression .)
+    DIVIDE          reduce using rule 7 (expression -> MINUS expression .)
+    )               reduce using rule 7 (expression -> MINUS expression .)
+
+  ! PLUS            [ shift and go to state 12 ]
+  ! MINUS           [ shift and go to state 13 ]
+  ! TIMES           [ shift and go to state 14 ]
+  ! DIVIDE          [ shift and go to state 15 ]
 
 
-state 16
+state 17
+
+    (8) expression -> ( expression . )
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    )               shift and go to state 23
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    TIMES           shift and go to state 14
+    DIVIDE          shift and go to state 15
+
+
+state 18
 
     (1) statement -> INT ID EQUAL expression . SEMICOLON
     (3) expression -> expression . PLUS expression
@@ -306,14 +361,14 @@ state 16
     (5) expression -> expression . TIMES expression
     (6) expression -> expression . DIVIDE expression
 
-    SEMICOLON       shift and go to state 22
-    PLUS            shift and go to state 11
-    MINUS           shift and go to state 12
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    SEMICOLON       shift and go to state 24
+    PLUS            shift and go to state 12
+    MINUS           shift and go to state 13
+    TIMES           shift and go to state 14
+    DIVIDE          shift and go to state 15
 
 
-state 17
+state 19
 
     (3) expression -> expression PLUS expression .
     (3) expression -> expression . PLUS expression
@@ -325,16 +380,16 @@ state 17
     PLUS            reduce using rule 3 (expression -> expression PLUS expression .)
     MINUS           reduce using rule 3 (expression -> expression PLUS expression .)
     )               reduce using rule 3 (expression -> expression PLUS expression .)
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    TIMES           shift and go to state 14
+    DIVIDE          shift and go to state 15
 
   ! TIMES           [ reduce using rule 3 (expression -> expression PLUS expression .) ]
   ! DIVIDE          [ reduce using rule 3 (expression -> expression PLUS expression .) ]
-  ! PLUS            [ shift and go to state 11 ]
-  ! MINUS           [ shift and go to state 12 ]
+  ! PLUS            [ shift and go to state 12 ]
+  ! MINUS           [ shift and go to state 13 ]
 
 
-state 18
+state 20
 
     (4) expression -> expression MINUS expression .
     (3) expression -> expression . PLUS expression
@@ -346,16 +401,16 @@ state 18
     PLUS            reduce using rule 4 (expression -> expression MINUS expression .)
     MINUS           reduce using rule 4 (expression -> expression MINUS expression .)
     )               reduce using rule 4 (expression -> expression MINUS expression .)
-    TIMES           shift and go to state 13
-    DIVIDE          shift and go to state 14
+    TIMES           shift and go to state 14
+    DIVIDE          shift and go to state 15
 
   ! TIMES           [ reduce using rule 4 (expression -> expression MINUS expression .) ]
   ! DIVIDE          [ reduce using rule 4 (expression -> expression MINUS expression .) ]
-  ! PLUS            [ shift and go to state 11 ]
-  ! MINUS           [ shift and go to state 12 ]
+  ! PLUS            [ shift and go to state 12 ]
+  ! MINUS           [ shift and go to state 13 ]
 
 
-state 19
+state 21
 
     (5) expression -> expression TIMES expression .
     (3) expression -> expression . PLUS expression
@@ -370,13 +425,13 @@ state 19
     DIVIDE          reduce using rule 5 (expression -> expression TIMES expression .)
     )               reduce using rule 5 (expression -> expression TIMES expression .)
 
-  ! PLUS            [ shift and go to state 11 ]
-  ! MINUS           [ shift and go to state 12 ]
-  ! TIMES           [ shift and go to state 13 ]
-  ! DIVIDE          [ shift and go to state 14 ]
+  ! PLUS            [ shift and go to state 12 ]
+  ! MINUS           [ shift and go to state 13 ]
+  ! TIMES           [ shift and go to state 14 ]
+  ! DIVIDE          [ shift and go to state 15 ]
 
 
-state 20
+state 22
 
     (6) expression -> expression DIVIDE expression .
     (3) expression -> expression . PLUS expression
@@ -391,25 +446,25 @@ state 20
     DIVIDE          reduce using rule 6 (expression -> expression DIVIDE expression .)
     )               reduce using rule 6 (expression -> expression DIVIDE expression .)
 
-  ! PLUS            [ shift and go to state 11 ]
-  ! MINUS           [ shift and go to state 12 ]
-  ! TIMES           [ shift and go to state 13 ]
-  ! DIVIDE          [ shift and go to state 14 ]
+  ! PLUS            [ shift and go to state 12 ]
+  ! MINUS           [ shift and go to state 13 ]
+  ! TIMES           [ shift and go to state 14 ]
+  ! DIVIDE          [ shift and go to state 15 ]
 
 
-state 21
+state 23
 
-    (7) expression -> ( expression ) .
+    (8) expression -> ( expression ) .
 
-    SEMICOLON       reduce using rule 7 (expression -> ( expression ) .)
-    PLUS            reduce using rule 7 (expression -> ( expression ) .)
-    MINUS           reduce using rule 7 (expression -> ( expression ) .)
-    TIMES           reduce using rule 7 (expression -> ( expression ) .)
-    DIVIDE          reduce using rule 7 (expression -> ( expression ) .)
-    )               reduce using rule 7 (expression -> ( expression ) .)
+    SEMICOLON       reduce using rule 8 (expression -> ( expression ) .)
+    PLUS            reduce using rule 8 (expression -> ( expression ) .)
+    MINUS           reduce using rule 8 (expression -> ( expression ) .)
+    TIMES           reduce using rule 8 (expression -> ( expression ) .)
+    DIVIDE          reduce using rule 8 (expression -> ( expression ) .)
+    )               reduce using rule 8 (expression -> ( expression ) .)
 
 
-state 22
+state 24
 
     (1) statement -> INT ID EQUAL expression SEMICOLON .
 
