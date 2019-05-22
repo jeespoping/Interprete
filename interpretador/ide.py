@@ -53,7 +53,7 @@ def colenguaje():
 
         reloj1.tick(15)
         ventana.fill((255,255,255))
-        
+
         x = 120
         y = 300
         for index in range(len(palabra)):
