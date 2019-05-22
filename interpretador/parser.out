@@ -1,179 +1,417 @@
 Created by PLY version 3.11 (http://www.dabeaz.com/ply)
 
+Unused terminals:
+
+    CIN
+    COMMA
+    DEQUAL
+    DISTINT
+    ELSE
+    ENDL
+    FOR
+    GREATER
+    GREATEREQUAL
+    IF
+    LBLOCK
+    LBRACKET
+    LESS
+    LESSEQUAL
+    LPAREN
+    MINUSMINUS
+    PLUSPLUS
+    POINT
+    QUOTES
+    RBLOCK
+    RBRACKET
+    RPAREN
+    STRING
+    WHILE
+
 Grammar
 
-Rule 0     S' -> program
-Rule 1     program -> declaration_list
-Rule 2     declaration_list -> declaration_list declaration
-Rule 3     declaration_list -> declaration
-Rule 4     declaration -> var_declaration
-Rule 5     declaration -> fun_declaration
-Rule 6     declaration -> HASH INCLUDE LESS ID GREATER
-Rule 7     declaration -> USING NAMESPACE STD SEMICOLON
-Rule 8     var_declaration -> type_specifier ID SEMICOLON
-Rule 9     var_declaration -> type_specifier ID COMMA ID SEMICOLON
-Rule 10    var_declaration -> type_specifier ID EQUAL NUMBER SEMICOLON
-Rule 11    var_declaration -> type_specifier ID EQUAL var SEMICOLON
-Rule 12    var_declaration -> type_specifier ID LBRACKET NUMBER RBRACKET SEMICOLON
-Rule 13    type_specifier -> INT
-Rule 14    type_specifier -> VOID
-Rule 15    type_specifier -> STRING
-Rule 16    fun_declaration -> type_specifier ID LPAREN params RPAREN compount_stmt
-Rule 17    params -> param_list
-Rule 18    params -> VOID
-Rule 19    param_list -> param_list COMMA param
-Rule 20    param_list -> param
-Rule 21    param_list -> empty
-Rule 22    param -> type_specifier ID
-Rule 23    param -> type_specifier ID LBRACKET RBRACKET
-Rule 24    compount_stmt -> LBLOCK local_declarations statement_list RBLOCK
-Rule 25    local_declarations -> local_declarations var_declaration
-Rule 26    local_declarations -> empty
-Rule 27    statement_list -> statement_list statement
-Rule 28    statement_list -> empty
-Rule 29    statement -> expression_stmt
-Rule 30    statement -> compount_stmt
-Rule 31    statement -> selection_stmt
-Rule 32    statement -> iteration_stmt
-Rule 33    statement -> return_stmt
-Rule 34    expression_stmt -> expression SEMICOLON
-Rule 35    expression_stmt -> SEMICOLON
-Rule 36    expression_stmt -> COUT LGREATER QUOTES ID QUOTES SEMICOLON
-Rule 37    expression_stmt -> COUT LGREATER QUOTES ID QUOTES LGREATER ENDL SEMICOLON
-Rule 38    expression_stmt -> COUT LGREATER STRING SEMICOLON
-Rule 39    expression_stmt -> COUT LGREATER STRING LGREATER ENDL SEMICOLON
-Rule 40    expression_stmt -> COUT LGREATER var SEMICOLON
-Rule 41    expression_stmt -> COUT LGREATER var LGREATER ENDL SEMICOLON
-Rule 42    expression_stmt -> COUT LGREATER var LGREATER var SEMICOLON
-Rule 43    expression_stmt -> COUT LGREATER var LGREATER var LGREATER ENDL SEMICOLON
-Rule 44    expression_stmt -> CIN RGREATER var SEMICOLON
-Rule 45    expression_stmt -> CIN RGREATER var RGREATER var SEMICOLON
-Rule 46    expression_stmt -> CIN POINT GET LPAREN RPAREN SEMICOLON
-Rule 47    expression_stmt -> ID PLUSPLUS
-Rule 48    expression_stmt -> PLUSPLUS ID
-Rule 49    expression_stmt -> ID MINUSMINUS
-Rule 50    expression_stmt -> MINUSMINUS ID
-Rule 51    selection_stmt -> IF LPAREN expression RPAREN statement
-Rule 52    selection_stmt -> IF LPAREN expression RPAREN statement ELSE statement
-Rule 53    iteration_stmt -> WHILE LPAREN expression RPAREN statement
-Rule 54    iteration_stmt -> <empty>
-Rule 55    iteration_stmt -> FOR LPAREN var SEMICOLON expression SEMICOLON expression RPAREN statement
-Rule 56    iteration_stmt -> FOR LPAREN var SEMICOLON expression SEMICOLON var PLUSPLUS RPAREN statement
-Rule 57    iteration_stmt -> FOR LPAREN var SEMICOLON expression SEMICOLON PLUSPLUS var RPAREN statement
-Rule 58    iteration_stmt -> FOR LPAREN var SEMICOLON expression SEMICOLON var MINUSMINUS RPAREN statement
-Rule 59    iteration_stmt -> FOR LPAREN var SEMICOLON expression SEMICOLON MINUSMINUS var RPAREN statement
-Rule 60    return_stmt -> RETURN SEMICOLON
-Rule 61    return_stmt -> RETURN expression SEMICOLON
-Rule 62    expression -> var EQUAL expression
-Rule 63    expression -> simple_expression
-Rule 64    var -> ID
-Rule 65    var -> ID LBRACKET expression RBRACKET
-Rule 66    simple_expression -> additive_expression relop additive_expression
-Rule 67    simple_expression -> additive_expression
-Rule 68    relop -> LESS
-Rule 69    relop -> LESSEQUAL
-Rule 70    relop -> GREATER
-Rule 71    relop -> GREATEREQUAL
-Rule 72    relop -> DEQUAL
-Rule 73    relop -> DISTINT
-Rule 74    relop -> QUOTES
-Rule 75    additive_expression -> additive_expression addop term
-Rule 76    additive_expression -> term
-Rule 77    addop -> PLUS
-Rule 78    addop -> MINUS
-Rule 79    term -> term mulop factor
-Rule 80    term -> factor
-Rule 81    mulop -> TIMES
-Rule 82    mulop -> DIVIDE
-Rule 83    factor -> LPAREN expression RPAREN
-Rule 84    factor -> var
-Rule 85    factor -> call
-Rule 86    factor -> NUMBER
-Rule 87    call -> ID LPAREN args RPAREN
-Rule 88    args -> args_list
-Rule 89    args -> empty
-Rule 90    args_list -> args_list COMMA expression
-Rule 91    args_list -> expression
-Rule 92    empty -> <empty>
+Rule 0     S' -> statement
+Rule 1     statement -> INT ID EQUAL expression SEMICOLON
+Rule 2     statement -> COUT expression SEMICOLON
+Rule 3     expression -> expression PLUS expression
+Rule 4     expression -> expression MINUS expression
+Rule 5     expression -> expression TIMES expression
+Rule 6     expression -> expression DIVIDE expression
+Rule 7     expression -> ( expression )
+Rule 8     expression -> NUMBER
+Rule 9     expression -> ID
 
 Terminals, with rules where they appear
 
-CIN                  : 44 45 46
-COMMA                : 9 19 90
-COUT                 : 36 37 38 39 40 41 42 43
-DEQUAL               : 72
-DISTINT              : 73
-DIVIDE               : 82
-ELSE                 : 52
-ENDL                 : 37 39 41 43
-EQUAL                : 10 11 62
-FOR                  : 55 56 57 58 59
-GREATER              : 6 70
-GREATEREQUAL         : 71
-ID                   : 6 8 9 9 10 11 12 16 22 23 36 37 47 48 49 50 64 65 87
-IF                   : 51 52
-INT                  : 13
-LBLOCK               : 24
-LBRACKET             : 12 23 65
-LESS                 : 6 68
-LESSEQUAL            : 69
-LPAREN               : 16 46 51 52 53 55 56 57 58 59 83 87
-MINUS                : 78
-MINUSMINUS           : 49 50 58 59
-NUMBER               : 10 12 86
-PLUS                 : 77
-PLUSPLUS             : 47 48 56 57
-POINT                : 46
-QUOTES               : 36 36 37 37 74
-RBLOCK               : 24
-RBRACKET             : 12 23 65
-RPAREN               : 16 46 51 52 53 55 56 57 58 59 83 87
-SEMICOLON            : 7 8 9 10 11 12 34 35 36 37 38 39 40 41 42 43 44 45 46 55 55 56 56 57 57 58 58 59 59 60 61
-STRING               : 15 38 39
-TIMES                : 81
-WHILE                : 53
+(                    : 7
+)                    : 7
+CIN                  : 
+COMMA                : 
+COUT                 : 2
+DEQUAL               : 
+DISTINT              : 
+DIVIDE               : 6
+ELSE                 : 
+ENDL                 : 
+EQUAL                : 1
+FOR                  : 
+GREATER              : 
+GREATEREQUAL         : 
+ID                   : 1 9
+IF                   : 
+INT                  : 1
+LBLOCK               : 
+LBRACKET             : 
+LESS                 : 
+LESSEQUAL            : 
+LPAREN               : 
+MINUS                : 4
+MINUSMINUS           : 
+NUMBER               : 8
+PLUS                 : 3
+PLUSPLUS             : 
+POINT                : 
+QUOTES               : 
+RBLOCK               : 
+RBRACKET             : 
+RPAREN               : 
+SEMICOLON            : 1 2
+STRING               : 
+TIMES                : 5
+WHILE                : 
 error                : 
 
 Nonterminals, with rules where they appear
 
-GET                  : 46
-HASH                 : 6
-INCLUDE              : 6
-LGREATER             : 36 37 37 38 39 39 40 41 41 42 42 43 43 43
-NAMESPACE            : 7
-RETURN               : 60 61
-RGREATER             : 44 45 45
-STD                  : 7
-USING                : 7
-VOID                 : 14 18
-additive_expression  : 66 66 67 75
-addop                : 75
-args                 : 87
-args_list            : 88 90
-call                 : 85
-compount_stmt        : 16 30
-declaration          : 2 3
-declaration_list     : 1 2
-empty                : 21 26 28 89
-expression           : 34 51 52 53 55 55 56 57 58 59 61 62 65 83 90 91
-expression_stmt      : 29
-factor               : 79 80
-fun_declaration      : 5
-iteration_stmt       : 32
-local_declarations   : 24 25
-mulop                : 79
-param                : 19 20
-param_list           : 17 19
-params               : 16
-program              : 0
-relop                : 66
-return_stmt          : 33
-selection_stmt       : 31
-simple_expression    : 63
-statement            : 27 51 52 52 53 55 56 57 58 59
-statement_list       : 24 27
-term                 : 75 76 79
-type_specifier       : 8 9 10 11 12 16 22 23
-var                  : 11 40 41 42 42 43 43 44 45 45 55 56 56 57 57 58 58 59 59 62 84
-var_declaration      : 4 25
+expression           : 1 2 3 3 4 4 5 5 6 6 7
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . INT ID EQUAL expression SEMICOLON
+    (2) statement -> . COUT expression SEMICOLON
+
+    INT             shift and go to state 2
+    COUT            shift and go to state 3
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> INT . ID EQUAL expression SEMICOLON
+
+    ID              shift and go to state 4
+
+
+state 3
+
+    (2) statement -> COUT . expression SEMICOLON
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 5
+
+state 4
+
+    (1) statement -> INT ID . EQUAL expression SEMICOLON
+
+    EQUAL           shift and go to state 9
+
+
+state 5
+
+    (2) statement -> COUT expression . SEMICOLON
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       shift and go to state 10
+    PLUS            shift and go to state 11
+    MINUS           shift and go to state 12
+    TIMES           shift and go to state 13
+    DIVIDE          shift and go to state 14
+
+
+state 6
+
+    (7) expression -> ( . expression )
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 15
+
+state 7
+
+    (8) expression -> NUMBER .
+
+    SEMICOLON       reduce using rule 8 (expression -> NUMBER .)
+    PLUS            reduce using rule 8 (expression -> NUMBER .)
+    MINUS           reduce using rule 8 (expression -> NUMBER .)
+    TIMES           reduce using rule 8 (expression -> NUMBER .)
+    DIVIDE          reduce using rule 8 (expression -> NUMBER .)
+    )               reduce using rule 8 (expression -> NUMBER .)
+
+
+state 8
+
+    (9) expression -> ID .
+
+    SEMICOLON       reduce using rule 9 (expression -> ID .)
+    PLUS            reduce using rule 9 (expression -> ID .)
+    MINUS           reduce using rule 9 (expression -> ID .)
+    TIMES           reduce using rule 9 (expression -> ID .)
+    DIVIDE          reduce using rule 9 (expression -> ID .)
+    )               reduce using rule 9 (expression -> ID .)
+
+
+state 9
+
+    (1) statement -> INT ID EQUAL . expression SEMICOLON
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 16
+
+state 10
+
+    (2) statement -> COUT expression SEMICOLON .
+
+    $end            reduce using rule 2 (statement -> COUT expression SEMICOLON .)
+
+
+state 11
+
+    (3) expression -> expression PLUS . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 17
+
+state 12
+
+    (4) expression -> expression MINUS . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 18
+
+state 13
+
+    (5) expression -> expression TIMES . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 19
+
+state 14
+
+    (6) expression -> expression DIVIDE . expression
+    (3) expression -> . expression PLUS expression
+    (4) expression -> . expression MINUS expression
+    (5) expression -> . expression TIMES expression
+    (6) expression -> . expression DIVIDE expression
+    (7) expression -> . ( expression )
+    (8) expression -> . NUMBER
+    (9) expression -> . ID
+
+    (               shift and go to state 6
+    NUMBER          shift and go to state 7
+    ID              shift and go to state 8
+
+    expression                     shift and go to state 20
+
+state 15
+
+    (7) expression -> ( expression . )
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    )               shift and go to state 21
+    PLUS            shift and go to state 11
+    MINUS           shift and go to state 12
+    TIMES           shift and go to state 13
+    DIVIDE          shift and go to state 14
+
+
+state 16
+
+    (1) statement -> INT ID EQUAL expression . SEMICOLON
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       shift and go to state 22
+    PLUS            shift and go to state 11
+    MINUS           shift and go to state 12
+    TIMES           shift and go to state 13
+    DIVIDE          shift and go to state 14
+
+
+state 17
+
+    (3) expression -> expression PLUS expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       reduce using rule 3 (expression -> expression PLUS expression .)
+    PLUS            reduce using rule 3 (expression -> expression PLUS expression .)
+    MINUS           reduce using rule 3 (expression -> expression PLUS expression .)
+    )               reduce using rule 3 (expression -> expression PLUS expression .)
+    TIMES           shift and go to state 13
+    DIVIDE          shift and go to state 14
+
+  ! TIMES           [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+  ! DIVIDE          [ reduce using rule 3 (expression -> expression PLUS expression .) ]
+  ! PLUS            [ shift and go to state 11 ]
+  ! MINUS           [ shift and go to state 12 ]
+
+
+state 18
+
+    (4) expression -> expression MINUS expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       reduce using rule 4 (expression -> expression MINUS expression .)
+    PLUS            reduce using rule 4 (expression -> expression MINUS expression .)
+    MINUS           reduce using rule 4 (expression -> expression MINUS expression .)
+    )               reduce using rule 4 (expression -> expression MINUS expression .)
+    TIMES           shift and go to state 13
+    DIVIDE          shift and go to state 14
+
+  ! TIMES           [ reduce using rule 4 (expression -> expression MINUS expression .) ]
+  ! DIVIDE          [ reduce using rule 4 (expression -> expression MINUS expression .) ]
+  ! PLUS            [ shift and go to state 11 ]
+  ! MINUS           [ shift and go to state 12 ]
+
+
+state 19
+
+    (5) expression -> expression TIMES expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       reduce using rule 5 (expression -> expression TIMES expression .)
+    PLUS            reduce using rule 5 (expression -> expression TIMES expression .)
+    MINUS           reduce using rule 5 (expression -> expression TIMES expression .)
+    TIMES           reduce using rule 5 (expression -> expression TIMES expression .)
+    DIVIDE          reduce using rule 5 (expression -> expression TIMES expression .)
+    )               reduce using rule 5 (expression -> expression TIMES expression .)
+
+  ! PLUS            [ shift and go to state 11 ]
+  ! MINUS           [ shift and go to state 12 ]
+  ! TIMES           [ shift and go to state 13 ]
+  ! DIVIDE          [ shift and go to state 14 ]
+
+
+state 20
+
+    (6) expression -> expression DIVIDE expression .
+    (3) expression -> expression . PLUS expression
+    (4) expression -> expression . MINUS expression
+    (5) expression -> expression . TIMES expression
+    (6) expression -> expression . DIVIDE expression
+
+    SEMICOLON       reduce using rule 6 (expression -> expression DIVIDE expression .)
+    PLUS            reduce using rule 6 (expression -> expression DIVIDE expression .)
+    MINUS           reduce using rule 6 (expression -> expression DIVIDE expression .)
+    TIMES           reduce using rule 6 (expression -> expression DIVIDE expression .)
+    DIVIDE          reduce using rule 6 (expression -> expression DIVIDE expression .)
+    )               reduce using rule 6 (expression -> expression DIVIDE expression .)
+
+  ! PLUS            [ shift and go to state 11 ]
+  ! MINUS           [ shift and go to state 12 ]
+  ! TIMES           [ shift and go to state 13 ]
+  ! DIVIDE          [ shift and go to state 14 ]
+
+
+state 21
+
+    (7) expression -> ( expression ) .
+
+    SEMICOLON       reduce using rule 7 (expression -> ( expression ) .)
+    PLUS            reduce using rule 7 (expression -> ( expression ) .)
+    MINUS           reduce using rule 7 (expression -> ( expression ) .)
+    TIMES           reduce using rule 7 (expression -> ( expression ) .)
+    DIVIDE          reduce using rule 7 (expression -> ( expression ) .)
+    )               reduce using rule 7 (expression -> ( expression ) .)
+
+
+state 22
+
+    (1) statement -> INT ID EQUAL expression SEMICOLON .
+
+    $end            reduce using rule 1 (statement -> INT ID EQUAL expression SEMICOLON .)
 

@@ -1,4 +1,4 @@
-
+0
 import ply.lex as lex
 import os
 
@@ -7,21 +7,21 @@ tokens = (
 
     # Palabras Reservadas
     'COUT',
-    #'CIN',
-    #'ENDL',
-    #'ELSE',
-    #'IF',
+    'CIN',
+    'ENDL',
+    'ELSE',
+    'IF',
     'INT',
-    #'STRING',
-    #'WHILE',
-    #'FOR',
+    'STRING',
+    'WHILE',
+    'FOR',
 
     # Symbolos
-    #'POINT',
+    'POINT',
     'PLUS',
-    #'PLUSPLUS',
+    'PLUSPLUS',
     'MINUS',
-    #'MINUSMINUS',
+    'MINUSMINUS',
     'TIMES',
     'DIVIDE',
     'LESS',
@@ -77,7 +77,7 @@ def t_COUT(t):
 def t_CIN(t):
     r'entr'
     return t
-
+0
 
 def t_ENDL(t):
     r'salta'
