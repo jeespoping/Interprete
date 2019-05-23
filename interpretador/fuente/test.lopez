@@ -1,19 +1,5 @@
-
-/** comentario
-	de varias lineas
-
-
-**/		
-
-{
-			
-	
-para(enterito a=0;;a<10;; a++ ){
-
-	impr "hola mundo" salta ;;
-
+mientras (){
+	mientras(){
+	enterito a = 5;;
+		}
 	}
-]] Esto es otro comentario
-
-	entr();;
-}
