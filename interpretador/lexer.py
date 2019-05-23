@@ -12,6 +12,7 @@ tokens = (
     'ELSE',
     'IF',
     'INT',
+    'STR',
     'STRING',
     'WHILE',
     'FOR',
@@ -77,7 +78,6 @@ def t_COUT(t):
 def t_CIN(t):
     r'entr'
     return t
-0
 
 def t_ENDL(t):
     r'salta'
@@ -98,6 +98,9 @@ def t_INT(t):
     r'enterito'
     return t
 
+def t_STR(t):
+    r'palabrita'
+    return t
 
 def t_WHILE(t):
     r'mientras'
