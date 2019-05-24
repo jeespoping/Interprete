@@ -36,7 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-102">
+            <state relative-caret-position="93">
+              <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -77,6 +78,7 @@
         <option value="$PROJECT_DIR$/interpretador/lexer.py" />
         <option value="$PROJECT_DIR$/interpretador/parser.py" />
         <option value="$PROJECT_DIR$/interpretador/ide.py" />
+        <option value="$PROJECT_DIR$/interpretador/gui.py" />
       </list>
     </option>
   </component>
@@ -209,6 +211,14 @@
       <option name="presentableId" value="Default" />
       <updated>1558498447624</updated>
     </task>
+    <task id="LOCAL-00001" summary="creando la extension para nuestros archivos '.lopez'">
+      <created>1558674737025</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558674737025</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -233,6 +243,10 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
     </layout>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="creando la extension para nuestros archivos '.lopez'" />
+    <option name="LAST_COMMIT_MESSAGE" value="creando la extension para nuestros archivos '.lopez'" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/interpretador/ide.py" />
@@ -262,7 +276,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
+        <state relative-caret-position="93">
+          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
