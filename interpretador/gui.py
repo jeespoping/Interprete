@@ -34,7 +34,7 @@ class Aplicacion:
             mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
 
     def recuperar(self):
-        nombrearch=fd.askopenfilename(initialdir = "/",title = "Seleccione archivo",filetypes = (("txt files","*.txt"),("todos los archivos","*.*")))
+        nombrearch=fd.askopenfilename(initialdir = "/",title = "Seleccione archivo",filetypes = (("txt files","*.lopez"),("todos los archivos","*.*")))
         if nombrearch!='':
             archi1=open(nombrearch, "r", encoding="utf-8")
             contenido=archi1.read()
