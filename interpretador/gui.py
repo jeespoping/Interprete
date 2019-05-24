@@ -3,8 +3,10 @@ from tkinter import scrolledtext as st
 import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
+from i_parser import analizador
 
 class Aplicacion:
+    nombrearch1 = "/"
     def __init__(self):
         self.ventana1=tk.Tk()
         self.agregar_menu()
@@ -21,26 +23,33 @@ class Aplicacion:
         opciones1.add_separator()
         opciones1.add_command(label="Salir", command=self.salir)
         menubar1.add_cascade(label="Archivo", menu=opciones1)
+        menubar1.add_command(label="Compilar", command=self.compilar)
 
     def salir(self):
         sys.exit()
 
     def guardar(self):
-        nombrearch=fd.asksaveasfilename(initialdir = "/",title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))+'.lopez'
+        nombrearch=fd.asksaveasfilename(initialdir = self.nombrearch1,title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))+'.lopez'
         if nombrearch!='':
             archi1=open(nombrearch, "w", encoding="utf-8")
             archi1.write(self.scrolledtext1.get("1.0", tk.END))
             archi1.close()
+            self.nombrearch1 = nombrearch
             mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
 
     def recuperar(self):
-        nombrearch=fd.askopenfilename(initialdir = "/",title = "Seleccione archivo",filetypes = (("txt files","*.lopez"),("todos los archivos","*.*")))
+        nombrearch=fd.askopenfilename(initialdir = self.nombrearch1,title = "Seleccione archivo",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))
         if nombrearch!='':
             archi1=open(nombrearch, "r", encoding="utf-8")
             contenido=archi1.read()
             archi1.close()
             self.scrolledtext1.delete("1.0", tk.END)
             self.scrolledtext1.insert("1.0", contenido)
+            self.nombrearch1 = nombrearch
+
+    def compilar(self):
+        print(analizador(self.nombrearch1))
+
 
 
 aplicacion1=Aplicacion()

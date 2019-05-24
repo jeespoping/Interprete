@@ -113,19 +113,24 @@ def p_error(p):
     else:
         raise Exception('Syntax', 'error')
 
-parser = yacc.yacc()
+parser1 = yacc.yacc()
 
-if __name__ == '__main__':
-
+def analizador(direccion):
     if (len(sys.argv) > 1):
         fin = sys.argv[1]
     else:
-        fin = 'fuente/test.lopez'
+        fin = direccion
 
-    f = open(fin,'r')
-    data = f.read()
-    print(data)
-    parser.parse(data, tracking=True)
+    try:
+        f = open(fin,'r')
+        data = f.read()
+        try:
+            return parser1.parse(data, tracking=True)
+        except NameError:
+            print("No hay nada!!")
+    except PermissionError:
+        print("no hay ruta!!")
+
 
 
 #cont = 0
