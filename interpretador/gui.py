@@ -26,7 +26,7 @@ class Aplicacion:
         sys.exit()
 
     def guardar(self):
-        nombrearch=fd.asksaveasfilename(initialdir = "/",title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))
+        nombrearch=fd.asksaveasfilename(initialdir = "/",title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))+'.lopez'
         if nombrearch!='':
             archi1=open(nombrearch, "w", encoding="utf-8")
             archi1.write(self.scrolledtext1.get("1.0", tk.END))
