@@ -28,6 +28,7 @@ class Aplicacion:
         opciones1.add_command(label="Salir", command=self.salir)
         menubar1.add_cascade(label="Archivo", menu=opciones1)
         menubar1.add_command(label="Compilar", command=self.compilar)
+        menubar1.add_command(label = "Actualizar", command = self.actualizar)
 
     def salir(self):
         sys.exit()
@@ -50,6 +51,14 @@ class Aplicacion:
             self.scrolledtext1.delete("1.0", tk.END)
             self.scrolledtext1.insert("1.0", contenido)
             self.nombrearch1 = nombrearch
+
+    def actualizar(self):
+        if self.nombrearch1 != "/":
+            archi1 = open(self.nombrearch1, "w", encoding="utf-8")
+            archi1.write(self.scrolledtext1.get("1.0", tk.END))
+            archi1.close()
+        else:
+            mb.showerror("Error","Necesitas guardar los datos!!")
 
     def compilar(self):
         print(analizador(self.nombrearch1))
