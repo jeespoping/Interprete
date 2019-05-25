@@ -125,11 +125,11 @@ def analizador(direccion):
         f = open(fin, 'r')
         data = f.read()
         try:
-            return parser.parse(data, tracking=True)
+            parser.parse(data, tracking=True)
         except NameError:
-            return "No hay nada!!"
+            print("ERROR!!")
     except PermissionError:
-        return "no hay ruta!!"
+        print("no hay ruta!!")
 
 #cont = 0
 #while 1:
