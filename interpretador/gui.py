@@ -61,7 +61,7 @@ class Aplicacion:
             mb.showerror("Error","Necesitas guardar los datos!!")
 
     def compilar(self):
-        print(analizador(self.nombrearch1))
+        analizador(self.nombrearch1)
 
 
 

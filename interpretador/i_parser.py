@@ -3,6 +3,7 @@ import os
 from lexer import tokens
 import sys
 VERBOSE = 1
+ERROR = "Compilacion Exitosa!!"
 
 sys.path.insert(0, "../..")
 if sys.version_info[0] >= 3:
@@ -46,7 +47,7 @@ def p_statement_assign_str(p):
 
 def p_statement_expr(p):
     'statement : COUT expression SEMICOLON'
-    print(p[2])
+    #print(p[2])
 
 def p_expression_binop(p):
     '''expression : expression PLUS expression
@@ -103,20 +104,30 @@ def p_expression_id(p):
 #        print("Syntax error at EOF")
 
 def p_error(p):
-    #print str(dir(p))
-    #print str(dir(c_lexer))
+    global ERROR
+    #print (str(dir(p)))
+    #print (str(dir(c_lexer)))
     if VERBOSE:
         if p is not None:
-            print("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
+            #print("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
+            try:
+                ERROR=("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
+            except AttributeError:
+                ERROR=("No has escrito nada!!")
         else:
-            print("Error en Lexico linea: " + str(c_lexer.lexer.lineno))
+            #print("Error en Lexico linea: " + str(c_lexer.lexer.lineno))
+            try:
+                ERROR=("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
+            except AttributeError:
+                ERROR=("No has escrito nada!!")
     else:
         raise Exception('Syntax', 'error')
 
 parser = yacc.yacc()
 
 def analizador(direccion):
-
+    global ERROR
+    ERROR = "Compilacion Exitosa!!"
     if (len(sys.argv) > 1):
         fin = sys.argv[1]
     else:
@@ -126,10 +137,11 @@ def analizador(direccion):
         data = f.read()
         try:
             parser.parse(data, tracking=True)
+            return ERROR
         except NameError:
-            print("ERROR!!")
+            return ("ERROR!!")
     except PermissionError:
-        print("no hay ruta!!")
+        return ("no hay ruta!!")
 
 #cont = 0
 #while 1:
