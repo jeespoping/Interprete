@@ -7,6 +7,7 @@ from i_parser import analizador
 
 class Aplicacion:
     nombrearch1 = ""
+    bandera = False
     def __init__(self):
         self.ventana1=tk.Tk()
         self.ventana1.config(bg = "sky blue")
@@ -47,6 +48,7 @@ class Aplicacion:
             archi1.close()
             self.nombrearch1 = nombrearch
             mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
+            self.bandera = False
 
     def recuperar(self):
         nombrearch=fd.askopenfilename(initialdir = self.nombrearch1,title = "Seleccione archivo",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))
@@ -58,6 +60,7 @@ class Aplicacion:
             self.scrolledtext1.insert("1.0", contenido)
             self.nombrearch1 = nombrearch
             self.scrolledtext2.delete("1.0", tk.END)
+            self.bandera = False
 
     def actualizar(self):
         if self.nombrearch1 != "/":
@@ -65,13 +68,18 @@ class Aplicacion:
             archi1.write(self.scrolledtext1.get("1.0", tk.END))
             archi1.close()
             self.scrolledtext2.delete("1.0", tk.END)
+            self.bandera = False
         else:
             mb.showerror("Error","Necesitas guardar los datos!!")
 
     def compilar(self):
-        resultado = str(analizador(self.nombrearch1))
-        self.scrolledtext2.insert("1.0", resultado)
-        #print(analizador(self.nombrearch1))
+        if self.bandera == False:
+            resultado = str(analizador(self.nombrearch1))
+            self.scrolledtext2.insert("1.0", resultado)
+            self.bandera = True
+            #print(analizador(self.nombrearch1))
+        else:
+            mb.showerror("Error","No puedes compilar lo mismo otra ves")
 
 
 
