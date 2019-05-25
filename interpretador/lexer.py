@@ -8,7 +8,6 @@ tokens = (
     # Palabras Reservadas
     'COUT',
     'CIN',
-    'ENDL',
     'ELSE',
     'IF',
     'INT',
@@ -78,11 +77,6 @@ def t_COUT(t):
 def t_CIN(t):
     r'entr'
     return t
-
-def t_ENDL(t):
-    r'salta'
-    return t
-
 
 def t_ELSE(t):
     r'nombe'

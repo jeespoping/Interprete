@@ -1,3 +1,4 @@
+from tkinter import *
 import tkinter as tk
 from tkinter import scrolledtext as st
 import sys
@@ -22,7 +23,7 @@ class Aplicacion:
 
         self.scrolledtext1 = st.ScrolledText(self.ventana1, width=80, height=15)
         self.scrolledtext1.grid(column=0, row=0, padx=10, pady=10)
-        self.scrolledtext2 = st.ScrolledText(self.ventana1,width=80, height=10)
+        self.scrolledtext2 = st.ScrolledText(self.ventana1,state=DISABLED,width=80, height=10)
         self.scrolledtext2.grid(padx=0, pady=10)
 
     def agregar_menu(self):
@@ -41,6 +42,7 @@ class Aplicacion:
         sys.exit()
 
     def guardar(self):
+        self.scrolledtext2["state"] = NORMAL
         nombrearch=fd.asksaveasfilename(initialdir = self.nombrearch1,title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))+'.lopez'
         if nombrearch!='':
             archi1=open(nombrearch, "w", encoding="utf-8")
@@ -48,9 +50,12 @@ class Aplicacion:
             archi1.close()
             self.nombrearch1 = nombrearch
             mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
+            self.scrolledtext2.delete("1.0", tk.END)
             self.bandera = False
+        self.scrolledtext2["state"] = DISABLED
 
     def recuperar(self):
+        self.scrolledtext2["state"] = NORMAL
         nombrearch=fd.askopenfilename(initialdir = self.nombrearch1,title = "Seleccione archivo",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))
         if nombrearch!='':
             archi1=open(nombrearch, "r", encoding="utf-8")
@@ -61,9 +66,11 @@ class Aplicacion:
             self.nombrearch1 = nombrearch
             self.scrolledtext2.delete("1.0", tk.END)
             self.bandera = False
+        self.scrolledtext2["state"] = DISABLED
 
     def actualizar(self):
-        if self.nombrearch1 != "/":
+        self.scrolledtext2["state"] = NORMAL
+        if self.nombrearch1 != "":
             archi1 = open(self.nombrearch1, "w", encoding="utf-8")
             archi1.write(self.scrolledtext1.get("1.0", tk.END))
             archi1.close()
@@ -71,15 +78,19 @@ class Aplicacion:
             self.bandera = False
         else:
             mb.showerror("Error","Necesitas guardar los datos!!")
+        self.scrolledtext2["state"] = DISABLED
 
     def compilar(self):
+        self.scrolledtext2["state"]=NORMAL
         if self.bandera == False:
             resultado = str(analizador(self.nombrearch1))
+
             self.scrolledtext2.insert("1.0", resultado)
             self.bandera = True
             #print(analizador(self.nombrearch1))
         else:
             mb.showerror("Error","No puedes compilar lo mismo otra ves")
+        self.scrolledtext2["state"] = DISABLED
 
 
 
