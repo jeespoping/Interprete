@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDEleftLPARENRPARENrightUMINUSCIN COMMA COUT DEQUAL DISTINT DIVIDE ELSE ENDL EQUAL FOR GREATER GREATEREQUAL ID IF INT LBLOCK LBRACKET LESS LESSEQUAL LPAREN MINUS MINUSMINUS NUMBER PLUS PLUSPLUS POINT QUOTES RBLOCK RBRACKET RPAREN SEMICOLON STR STRING TIMES WHILEprogram : declaration_listdeclaration_list : declaration_list declarationdeclaration_list : declarationdeclaration : statement\n                        | sentencia\n    statement : INT ID EQUAL expression SEMICOLONstatement : STR ID EQUAL STRING SEMICOLONstatement : COUT expression SEMICOLONexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expressionexpression : MINUS expression %prec UMINUSexpression : LPAREN expression RPARENexpression : NUMBERsentencia_mientras : WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK\n    sentencia : sentencia_mientras\n                    | statement\n    lista_sentencia : lista_sentencia sentencia\n                    | sentencia\n    expression : ID'
+_lr_signature = 'leftPLUSMINUSleftTIMESDIVIDEleftLPARENRPARENrightUMINUSCIN COMMA COUT DEQUAL DISTINT DIVIDE ELSE ENDL EQUAL FOR GREATER GREATEREQUAL ID IF INT LBLOCK LBRACKET LESS LESSEQUAL LPAREN MINUS MINUSMINUS NUMBER PLUS PLUSPLUS POINT QUOTES RBLOCK RBRACKET RPAREN SEMICOLON STR STRING TIMES WHILEprogram : declaration_listdeclaration_list : declaration_list declarationdeclaration_list : declarationdeclaration : statement\n                        | sentencia\n    statement : INT ID EQUAL expression SEMICOLONstatement : STR ID EQUAL STRING SEMICOLONstatement : COUT expression SEMICOLONexpression : expression PLUS expression\n                      | expression MINUS expression\n                      | expression TIMES expression\n                      | expression DIVIDE expressionexpression : MINUS expression %prec UMINUSexpression : LPAREN expression RPARENexpression : NUMBERsentencia_mientras : WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK\n    sentencia_para : FOR LPAREN ID EQUAL expression SEMICOLON expression RPAREN LBLOCK lista_sentencia RBLOCKsentencia_si : IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK\n                    | IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK ELSE LPAREN RPAREN LBLOCK lista_sentencia RBLOCKsentencia : sentencia_mientras\n                    | statement\n                    | sentencia_para\n                    | sentencia_si\n    lista_sentencia : lista_sentencia sentencia\n                    | sentencia\n    expression : ID'
     
-_lr_action_items = {'INT':([0,2,3,4,5,9,11,22,37,38,39,40,41,42,43,44,],[6,6,-3,-4,-5,-17,-2,-8,6,-6,-7,6,-20,-18,-16,-19,]),'STR':([0,2,3,4,5,9,11,22,37,38,39,40,41,42,43,44,],[7,7,-3,-4,-5,-17,-2,-8,7,-6,-7,7,-20,-18,-16,-19,]),'COUT':([0,2,3,4,5,9,11,22,37,38,39,40,41,42,43,44,],[8,8,-3,-4,-5,-17,-2,-8,8,-6,-7,8,-20,-18,-16,-19,]),'WHILE':([0,2,3,4,5,9,11,22,37,38,39,40,41,42,43,44,],[10,10,-3,-4,-5,-17,-2,-8,10,-6,-7,10,-20,-18,-16,-19,]),'$end':([1,2,3,4,5,9,11,22,38,39,43,],[0,-1,-3,-4,-5,-17,-2,-8,-6,-7,-16,]),'ID':([6,7,8,15,16,20,23,24,25,26,],[12,13,18,18,18,18,18,18,18,18,]),'MINUS':([8,14,15,16,17,18,20,23,24,25,26,27,28,30,32,33,34,35,36,],[15,24,15,15,-15,-21,15,15,15,15,15,-13,24,24,-9,-10,-11,-12,-14,]),'LPAREN':([8,10,15,16,20,23,24,25,26,],[16,19,16,16,16,16,16,16,16,]),'NUMBER':([8,15,16,20,23,24,25,26,],[17,17,17,17,17,17,17,17,]),'RBLOCK':([9,22,38,39,40,41,42,43,44,],[-17,-8,-6,-7,43,-20,-18,-16,-19,]),'EQUAL':([12,13,],[20,21,]),'SEMICOLON':([14,17,18,27,30,31,32,33,34,35,36,],[22,-15,-21,-13,38,39,-9,-10,-11,-12,-14,]),'PLUS':([14,17,18,27,28,30,32,33,34,35,36,],[23,-15,-21,-13,23,23,-9,-10,-11,-12,-14,]),'TIMES':([14,17,18,27,28,30,32,33,34,35,36,],[25,-15,-21,-13,25,25,25,25,-11,-12,-14,]),'DIVIDE':([14,17,18,27,28,30,32,33,34,35,36,],[26,-15,-21,-13,26,26,26,26,-11,-12,-14,]),'RPAREN':([17,18,19,27,28,32,33,34,35,36,],[-15,-21,29,-13,36,-9,-10,-11,-12,-14,]),'STRING':([21,],[31,]),'LBLOCK':([29,],[37,]),}
+_lr_action_items = {'INT':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[6,6,-3,-4,-5,-20,-22,-23,-2,-8,6,6,-6,-7,6,-25,-21,6,-16,-24,-18,6,6,6,-17,6,-19,]),'STR':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[7,7,-3,-4,-5,-20,-22,-23,-2,-8,7,7,-6,-7,7,-25,-21,7,-16,-24,-18,7,7,7,-17,7,-19,]),'COUT':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[8,8,-3,-4,-5,-20,-22,-23,-2,-8,8,8,-6,-7,8,-25,-21,8,-16,-24,-18,8,8,8,-17,8,-19,]),'WHILE':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[12,12,-3,-4,-5,-20,-22,-23,-2,-8,12,12,-6,-7,12,-25,-21,12,-16,-24,-18,12,12,12,-17,12,-19,]),'FOR':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[13,13,-3,-4,-5,-20,-22,-23,-2,-8,13,13,-6,-7,13,-25,-21,13,-16,-24,-18,13,13,13,-17,13,-19,]),'IF':([0,2,3,4,5,9,10,11,15,28,45,47,48,49,50,51,52,54,55,56,58,63,65,66,67,68,69,],[14,14,-3,-4,-5,-20,-22,-23,-2,-8,14,14,-6,-7,14,-25,-21,14,-16,-24,-18,14,14,14,-17,14,-19,]),'$end':([1,2,3,4,5,9,10,11,15,28,48,49,55,58,67,69,],[0,-1,-3,-4,-5,-20,-22,-23,-2,-8,-6,-7,-16,-18,-17,-19,]),'ID':([6,7,8,19,20,24,26,29,30,31,32,46,57,],[16,17,22,22,22,36,22,22,22,22,22,22,22,]),'MINUS':([8,18,19,20,21,22,26,29,30,31,32,33,34,38,40,41,42,43,44,46,53,57,59,],[19,30,19,19,-15,-26,19,19,19,19,19,-13,30,30,-9,-10,-11,-12,-14,19,30,19,30,]),'LPAREN':([8,12,13,14,19,20,26,29,30,31,32,46,57,60,],[20,23,24,25,20,20,20,20,20,20,20,20,20,62,]),'NUMBER':([8,19,20,26,29,30,31,32,46,57,],[21,21,21,21,21,21,21,21,21,21,]),'RBLOCK':([9,10,11,28,48,49,50,51,52,54,55,56,58,65,67,68,69,],[-20,-22,-23,-8,-6,-7,55,-25,-21,58,-16,-24,-18,67,-17,69,-19,]),'EQUAL':([16,17,36,],[26,27,46,]),'SEMICOLON':([18,21,22,33,38,39,40,41,42,43,44,53,],[28,-15,-26,-13,48,49,-9,-10,-11,-12,-14,57,]),'PLUS':([18,21,22,33,34,38,40,41,42,43,44,53,59,],[29,-15,-26,-13,29,29,-9,-10,-11,-12,-14,29,29,]),'TIMES':([18,21,22,33,34,38,40,41,42,43,44,53,59,],[31,-15,-26,-13,31,31,31,31,-11,-12,-14,31,31,]),'DIVIDE':([18,21,22,33,34,38,40,41,42,43,44,53,59,],[32,-15,-26,-13,32,32,32,32,-11,-12,-14,32,32,]),'RPAREN':([21,22,23,25,33,34,40,41,42,43,44,59,62,],[-15,-26,35,37,-13,44,-9,-10,-11,-12,-14,61,64,]),'STRING':([27,],[39,]),'LBLOCK':([35,37,61,64,],[45,47,63,66,]),'ELSE':([58,],[60,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'declaration_list':([0,],[2,]),'declaration':([0,2,],[3,11,]),'statement':([0,2,37,40,],[4,4,42,42,]),'sentencia':([0,2,37,40,],[5,5,41,44,]),'sentencia_mientras':([0,2,37,40,],[9,9,9,9,]),'expression':([8,15,16,20,23,24,25,26,],[14,27,28,30,32,33,34,35,]),'lista_sentencia':([37,],[40,]),}
+_lr_goto_items = {'program':([0,],[1,]),'declaration_list':([0,],[2,]),'declaration':([0,2,],[3,15,]),'statement':([0,2,45,47,50,54,63,65,66,68,],[4,4,52,52,52,52,52,52,52,52,]),'sentencia':([0,2,45,47,50,54,63,65,66,68,],[5,5,51,51,56,56,51,56,51,56,]),'sentencia_mientras':([0,2,45,47,50,54,63,65,66,68,],[9,9,9,9,9,9,9,9,9,9,]),'sentencia_para':([0,2,45,47,50,54,63,65,66,68,],[10,10,10,10,10,10,10,10,10,10,]),'sentencia_si':([0,2,45,47,50,54,63,65,66,68,],[11,11,11,11,11,11,11,11,11,11,]),'expression':([8,19,20,26,29,30,31,32,46,57,],[18,33,34,38,40,41,42,43,53,59,]),'lista_sentencia':([45,47,63,66,],[50,54,65,68,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,25 +27,30 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
-  ('program -> declaration_list','program',1,'p_program','parser.py',20),
-  ('declaration_list -> declaration_list declaration','declaration_list',2,'p_declaration_list_1','parser.py',24),
-  ('declaration_list -> declaration','declaration_list',1,'p_declaration_list_2','parser.py',29),
-  ('declaration -> statement','declaration',1,'p_declaration','parser.py',33),
-  ('declaration -> sentencia','declaration',1,'p_declaration','parser.py',34),
-  ('statement -> INT ID EQUAL expression SEMICOLON','statement',5,'p_statement_assign','parser.py',39),
-  ('statement -> STR ID EQUAL STRING SEMICOLON','statement',5,'p_statement_assign_str','parser.py',43),
-  ('statement -> COUT expression SEMICOLON','statement',3,'p_statement_expr','parser.py',47),
-  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','parser.py',51),
-  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','parser.py',52),
-  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','parser.py',53),
-  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','parser.py',54),
-  ('expression -> MINUS expression','expression',2,'p_expression_uminus','parser.py',65),
-  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression_group','parser.py',69),
-  ('expression -> NUMBER','expression',1,'p_expression_number','parser.py',73),
-  ('sentencia_mientras -> WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK','sentencia_mientras',6,'p_sentencia_mientras','parser.py',77),
-  ('sentencia -> sentencia_mientras','sentencia',1,'p_sentencia','parser.py',81),
-  ('sentencia -> statement','sentencia',1,'p_sentencia','parser.py',82),
-  ('lista_sentencia -> lista_sentencia sentencia','lista_sentencia',2,'p_lista_sentencia','parser.py',86),
-  ('lista_sentencia -> sentencia','lista_sentencia',1,'p_lista_sentencia','parser.py',87),
-  ('expression -> ID','expression',1,'p_expression_id','parser.py',91),
+  ('program -> declaration_list','program',1,'p_program','i_parser.py',22),
+  ('declaration_list -> declaration_list declaration','declaration_list',2,'p_declaration_list_1','i_parser.py',26),
+  ('declaration_list -> declaration','declaration_list',1,'p_declaration_list_2','i_parser.py',31),
+  ('declaration -> statement','declaration',1,'p_declaration','i_parser.py',35),
+  ('declaration -> sentencia','declaration',1,'p_declaration','i_parser.py',36),
+  ('statement -> INT ID EQUAL expression SEMICOLON','statement',5,'p_statement_assign','i_parser.py',41),
+  ('statement -> STR ID EQUAL STRING SEMICOLON','statement',5,'p_statement_assign_str','i_parser.py',45),
+  ('statement -> COUT expression SEMICOLON','statement',3,'p_statement_expr','i_parser.py',49),
+  ('expression -> expression PLUS expression','expression',3,'p_expression_binop','i_parser.py',53),
+  ('expression -> expression MINUS expression','expression',3,'p_expression_binop','i_parser.py',54),
+  ('expression -> expression TIMES expression','expression',3,'p_expression_binop','i_parser.py',55),
+  ('expression -> expression DIVIDE expression','expression',3,'p_expression_binop','i_parser.py',56),
+  ('expression -> MINUS expression','expression',2,'p_expression_uminus','i_parser.py',67),
+  ('expression -> LPAREN expression RPAREN','expression',3,'p_expression_group','i_parser.py',71),
+  ('expression -> NUMBER','expression',1,'p_expression_number','i_parser.py',75),
+  ('sentencia_mientras -> WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK','sentencia_mientras',6,'p_sentencia_mientras','i_parser.py',79),
+  ('sentencia_para -> FOR LPAREN ID EQUAL expression SEMICOLON expression RPAREN LBLOCK lista_sentencia RBLOCK','sentencia_para',11,'p_sentencia_para','i_parser.py',82),
+  ('sentencia_si -> IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK','sentencia_si',6,'p_sentencia_si','i_parser.py',85),
+  ('sentencia_si -> IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK ELSE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK','sentencia_si',12,'p_sentencia_si','i_parser.py',86),
+  ('sentencia -> sentencia_mientras','sentencia',1,'p_sentencia','i_parser.py',89),
+  ('sentencia -> statement','sentencia',1,'p_sentencia','i_parser.py',90),
+  ('sentencia -> sentencia_para','sentencia',1,'p_sentencia','i_parser.py',91),
+  ('sentencia -> sentencia_si','sentencia',1,'p_sentencia','i_parser.py',92),
+  ('lista_sentencia -> lista_sentencia sentencia','lista_sentencia',2,'p_lista_sentencia','i_parser.py',96),
+  ('lista_sentencia -> sentencia','lista_sentencia',1,'p_lista_sentencia','i_parser.py',97),
+  ('expression -> ID','expression',1,'p_expression_id','i_parser.py',101),
 ]

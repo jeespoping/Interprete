@@ -78,10 +78,18 @@ def p_expression_number(p):
 def p_sentencia_mientras(p):
     """sentencia_mientras : WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK
     """
+def p_sentencia_para(p):
+    "sentencia_para : FOR LPAREN ID EQUAL expression SEMICOLON expression RPAREN LBLOCK lista_sentencia RBLOCK"
+
+def p_sentencia_si(p):
+    """sentencia_si : IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK
+                    | IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK ELSE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK"""
 
 def p_sentencia(p):
     """sentencia : sentencia_mientras
                     | statement
+                    | sentencia_para
+                    | sentencia_si
     """
 
 def p_lista_sentencia(p):
