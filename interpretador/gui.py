@@ -6,7 +6,7 @@ from tkinter import messagebox as mb
 from i_parser import analizador
 
 class Aplicacion:
-    nombrearch1 = "/"
+    nombrearch1 = ""
     def __init__(self):
         self.ventana1=tk.Tk()
         self.ventana1.config(bg = "sky blue")
@@ -19,9 +19,11 @@ class Aplicacion:
 
     def agregar_campo_de_trabajo(self):
 
-        self.scrolledtext1 = st.ScrolledText(self.ventana1, width=80, height=20)
+        self.scrolledtext1 = st.ScrolledText(self.ventana1, width=80, height=15)
         self.scrolledtext1.grid(column=0, row=0, padx=10, pady=10)
-        self.boton_run = tk.Button(self.ventana1, text='play', command=self.salir).pack(side=TOP)
+        self.scrolledtext2 = st.ScrolledText(self.ventana1,width=80, height=10)
+        self.scrolledtext2.grid(padx=0, pady=10)
+       # self.boton_run = tk.Button(self.ventana1, text='play', command=self.salir).grid(column=0, row=0)
 
     def agregar_menu(self):
         menubar1 = tk.Menu(self.ventana1)
@@ -36,6 +38,16 @@ class Aplicacion:
 
     def salir(self):
         sys.exit()
+
+    def sobreescribir(self):
+        nombrearch = self.nombrearch1
+        if nombrearch == '':
+            self.guardar()
+        else:
+            archi1 = open(nombrearch, "w", encoding="utf-8")
+            archi1.write(self.scrolledtext1.get("1.0", tk.END))
+            archi1.close()
+            mb.showinfo("Información", "Los datos fueron guardados en el archivo.")
 
     def guardar(self):
         nombrearch=fd.asksaveasfilename(initialdir = self.nombrearch1,title = "Guardar como",filetypes = (("lopez files","*.lopez"),("todos los archivos","*.*")))+'.lopez'
@@ -57,7 +69,11 @@ class Aplicacion:
             self.nombrearch1 = nombrearch
 
     def compilar(self):
-        print(analizador(self.nombrearch1))
+        self.sobreescribir()
+        resultado = str(analizador(self.nombrearch1))
+        self.scrolledtext2.delete("1.0", tk.END)
+        self.scrolledtext2.insert("1.0", resultado)
+        #print(analizador(self.nombrearch1))
 
 
 
