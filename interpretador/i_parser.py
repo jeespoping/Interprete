@@ -127,9 +127,9 @@ def analizador(direccion):
         try:
             parser.parse(data, tracking=True)
         except NameError:
-            print("ERROR!!")
+            return("ERROR!!")
     except PermissionError:
-        print("no hay ruta!!")
+        return("no hay ruta!!")
 
 #cont = 0
 #while 1:
