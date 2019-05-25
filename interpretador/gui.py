@@ -9,6 +9,10 @@ class Aplicacion:
     nombrearch1 = "/"
     def __init__(self):
         self.ventana1=tk.Tk()
+        self.ventana1.config(bg = "sky blue")
+        self.ventana1.geometry("1000x460")
+        self.ventana1.resizable(width=False , height= False)
+        self.ventana1.title("IDE Lopez")
         self.agregar_menu()
         self.scrolledtext1=st.ScrolledText(self.ventana1, width=80, height=20)
         self.scrolledtext1.grid(column=0,row=0, padx=10, pady=10)

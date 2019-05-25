@@ -113,25 +113,23 @@ def p_error(p):
     else:
         raise Exception('Syntax', 'error')
 
-parser1 = yacc.yacc()
+parser = yacc.yacc()
 
 def analizador(direccion):
+
     if (len(sys.argv) > 1):
         fin = sys.argv[1]
     else:
         fin = direccion
-
     try:
-        f = open(fin,'r')
+        f = open(fin, 'r')
         data = f.read()
         try:
-            return parser1.parse(data, tracking=True)
+            parser.parse(data, tracking=True)
         except NameError:
             print("No hay nada!!")
     except PermissionError:
         print("no hay ruta!!")
-
-
 
 #cont = 0
 #while 1:
