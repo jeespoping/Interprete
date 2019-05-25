@@ -6,7 +6,7 @@ from tkinter import messagebox as mb
 from i_parser import analizador
 
 class Aplicacion:
-    nombrearch1 = "/"
+    nombrearch1 = ""
     def __init__(self):
         self.ventana1=tk.Tk()
         self.ventana1.config(bg = "sky blue")
@@ -14,9 +14,15 @@ class Aplicacion:
         self.ventana1.resizable(width=False , height= False)
         self.ventana1.title("IDE Lopez")
         self.agregar_menu()
-        self.scrolledtext1=st.ScrolledText(self.ventana1, width=80, height=20)
-        self.scrolledtext1.grid(column=0,row=0, padx=10, pady=10)
+        self.agregar_campo_de_trabajo()
         self.ventana1.mainloop()
+
+    def agregar_campo_de_trabajo(self):
+
+        self.scrolledtext1 = st.ScrolledText(self.ventana1, width=80, height=15)
+        self.scrolledtext1.grid(column=0, row=0, padx=10, pady=10)
+        self.scrolledtext2 = st.ScrolledText(self.ventana1,width=80, height=10)
+        self.scrolledtext2.grid(padx=0, pady=10)
 
     def agregar_menu(self):
         menubar1 = tk.Menu(self.ventana1)
@@ -51,17 +57,21 @@ class Aplicacion:
             self.scrolledtext1.delete("1.0", tk.END)
             self.scrolledtext1.insert("1.0", contenido)
             self.nombrearch1 = nombrearch
+            self.scrolledtext2.delete("1.0", tk.END)
 
     def actualizar(self):
         if self.nombrearch1 != "/":
             archi1 = open(self.nombrearch1, "w", encoding="utf-8")
             archi1.write(self.scrolledtext1.get("1.0", tk.END))
             archi1.close()
+            self.scrolledtext2.delete("1.0", tk.END)
         else:
             mb.showerror("Error","Necesitas guardar los datos!!")
 
     def compilar(self):
-        analizador(self.nombrearch1)
+        resultado = str(analizador(self.nombrearch1))
+        self.scrolledtext2.insert("1.0", resultado)
+        #print(analizador(self.nombrearch1))
 
 
 

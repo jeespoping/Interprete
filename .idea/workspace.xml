@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41530b69-2b7a-4b30-9920-ff49d70ce4f4" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="41530b69-2b7a-4b30-9920-ff49d70ce4f4" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,20 +13,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/interpretador/lexer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1343">
+            <state relative-caret-position="287">
               <caret line="80" selection-start-line="80" selection-end-line="80" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/interpretador/parser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -36,8 +22,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+            <state relative-caret-position="-1476">
+              <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
               <folding>
                 <element signature="e#0#20#0" expanded="true" />
               </folding>
@@ -48,8 +34,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/yacc.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58259">
-              <caret line="3432" selection-start-line="3432" selection-end-line="3432" />
+            <state relative-caret-position="131">
+              <caret line="324" column="8" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/interpretador/i_parser.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="228">
+              <caret line="127" column="28" lean-forward="true" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -79,6 +77,7 @@
         <option value="$PROJECT_DIR$/interpretador/parser.py" />
         <option value="$PROJECT_DIR$/interpretador/ide.py" />
         <option value="$PROJECT_DIR$/interpretador/gui.py" />
+        <option value="$PROJECT_DIR$/interpretador/i_parser.py" />
       </list>
     </option>
   </component>
@@ -92,6 +91,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -108,13 +108,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -218,7 +217,21 @@
       <option name="project" value="LOCAL" />
       <updated>1558674737025</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="creando la extension para nuestros archivos '.lopez' 2.0">
+      <created>1558675353302</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1558675353302</updated>
+    </task>
+    <task id="LOCAL-00003" summary="a punto de llevar los resultados de la compilacion a la gui.">
+      <created>1558757744012</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1558757744012</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -230,7 +243,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32405892" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.25982907" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -246,28 +259,38 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="creando la extension para nuestros archivos '.lopez'" />
-    <option name="LAST_COMMIT_MESSAGE" value="creando la extension para nuestros archivos '.lopez'" />
+    <MESSAGE value="creando la extension para nuestros archivos '.lopez' 2.0" />
+    <MESSAGE value="a punto de llevar los resultados de la compilacion a la gui." />
+    <option name="LAST_COMMIT_MESSAGE" value="a punto de llevar los resultados de la compilacion a la gui." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/interpretador/ide.py" />
+    <entry file="file://$PROJECT_DIR$/interpretador/parser.py" />
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="215">
+          <caret line="2142" selection-start-line="2142" selection-end-line="2142" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/interpretador/lexer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1343">
+        <state relative-caret-position="287">
           <caret line="80" selection-start-line="80" selection-end-line="80" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/yacc.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58259">
-          <caret line="3432" selection-start-line="3432" selection-end-line="3432" />
+        <state relative-caret-position="131">
+          <caret line="324" column="8" selection-start-line="324" selection-start-column="8" selection-end-line="324" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/interpretador/parser.py">
+    <entry file="file://$PROJECT_DIR$/interpretador/i_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="91" column="21" selection-start-line="91" selection-start-column="21" selection-end-line="91" selection-end-column="21" />
+        <state relative-caret-position="228">
+          <caret line="127" column="28" lean-forward="true" selection-start-line="127" selection-start-column="28" selection-end-line="127" selection-end-column="28" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -276,8 +299,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="31" column="63" lean-forward="true" selection-start-line="31" selection-start-column="63" selection-end-line="31" selection-end-column="63" />
+        <state relative-caret-position="-1476">
+          <caret line="17" column="32" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
           <folding>
             <element signature="e#0#20#0" expanded="true" />
           </folding>
