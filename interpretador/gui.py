@@ -14,9 +14,14 @@ class Aplicacion:
         self.ventana1.resizable(width=False , height= False)
         self.ventana1.title("IDE Lopez")
         self.agregar_menu()
-        self.scrolledtext1=st.ScrolledText(self.ventana1, width=80, height=20)
-        self.scrolledtext1.grid(column=0,row=0, padx=10, pady=10)
+        self.agregar_campo_de_trabajo()
         self.ventana1.mainloop()
+
+    def agregar_campo_de_trabajo(self):
+
+        self.scrolledtext1 = st.ScrolledText(self.ventana1, width=80, height=20)
+        self.scrolledtext1.grid(column=0, row=0, padx=10, pady=10)
+        self.boton_run = tk.Button(self.ventana1, text='play', command=self.salir).pack(side=TOP)
 
     def agregar_menu(self):
         menubar1 = tk.Menu(self.ventana1)
