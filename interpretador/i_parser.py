@@ -111,7 +111,7 @@ def p_error(p):
         if p is not None:
             #print("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
             try:
-                ERROR=("Error en Sintaxis linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
+                ERROR=("Error de Sintaxis en la linea:" + str(p.lexer.lineno)+"  Error de Contexto " + str(p.value))
             except AttributeError:
                 ERROR=("Error Lexico!!")
         else:
