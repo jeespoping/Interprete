@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="41530b69-2b7a-4b30-9920-ff49d70ce4f4" name="Default Changelist" comment="a punto de llevar los resultados de la compilacion a la gui.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpretador/gui.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpretador/gui.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/interpretador/i_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpretador/i_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpretador/lexer.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpretador/lexer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/interpretador/parsetab.py" beforeDir="false" afterPath="$PROJECT_DIR$/interpretador/parsetab.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,8 +19,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/interpretador/lexer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2940">
-              <caret line="80" selection-start-line="80" selection-end-line="80" />
+            <state relative-caret-position="274">
+              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -25,11 +28,20 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2">
-              <caret line="59" column="52" lean-forward="true" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
+            <state relative-caret-position="342">
+              <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
               <folding>
-                <element signature="e#0#20#0" expanded="true" />
+                <element signature="e#0#4#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/yacc.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="84">
+              <caret line="3357" selection-start-line="3357" selection-end-line="3357" />
             </state>
           </provider>
         </entry>
@@ -37,8 +49,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/interpretador/i_parser.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="228">
-              <caret line="115" column="40" lean-forward="true" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
+            <state relative-caret-position="-1372">
+              <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -59,6 +71,7 @@
     <findStrings>
       <find>statement</find>
       <find>name</find>
+      <find>less</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -67,11 +80,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/interpretador/lexer.py" />
         <option value="$PROJECT_DIR$/interpretador/parser.py" />
         <option value="$PROJECT_DIR$/interpretador/ide.py" />
-        <option value="$PROJECT_DIR$/interpretador/gui.py" />
+        <option value="$PROJECT_DIR$/interpretador/lexer.py" />
         <option value="$PROJECT_DIR$/interpretador/i_parser.py" />
+        <option value="$PROJECT_DIR$/interpretador/gui.py" />
       </list>
     </option>
   </component>
@@ -239,12 +252,12 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.13244048" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.100446425" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13675214" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.27008548" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -274,13 +287,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/yacc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4">
-          <caret line="696" column="8" selection-start-line="696" selection-start-column="8" selection-end-line="696" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/sre_constants.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4740">
@@ -295,13 +301,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/interpretador/lexer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2940">
-          <caret line="80" selection-start-line="80" selection-end-line="80" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/lex.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="299">
@@ -309,22 +308,36 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python37-32/Lib/site-packages/ply/yacc.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="3357" selection-start-line="3357" selection-end-line="3357" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/interpretador/i_parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="115" column="40" lean-forward="true" selection-start-line="115" selection-start-column="40" selection-end-line="115" selection-end-column="40" />
+        <state relative-caret-position="-1372">
+          <caret line="85" column="41" selection-start-line="85" selection-start-column="41" selection-end-line="85" selection-end-column="41" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/interpretador/lexer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="274">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/interpretador/gui.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2">
-          <caret line="59" column="52" lean-forward="true" selection-start-line="59" selection-start-column="52" selection-end-line="59" selection-end-column="52" />
+        <state relative-caret-position="342">
+          <caret line="51" column="32" lean-forward="true" selection-start-line="51" selection-start-column="32" selection-end-line="51" selection-end-column="32" />
           <folding>
-            <element signature="e#0#20#0" expanded="true" />
+            <element signature="e#0#4#0" expanded="true" />
           </folding>
         </state>
       </provider>

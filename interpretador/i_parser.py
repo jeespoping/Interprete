@@ -41,6 +41,9 @@ def p_statement_assign(p):
     'statement : INT ID EQUAL expression SEMICOLON'
     names[p[2]] = p[4]
 
+def p_statement_entrada(p):
+    'statement : CIN ID SEMICOLON'
+
 def p_statement_assign_str(p):
     'statement : STR ID EQUAL STRING SEMICOLON'
     names[p[2]] = str(p[4])
@@ -76,14 +79,25 @@ def p_expression_number(p):
     p[0] = p[1]
 
 def p_sentencia_mientras(p):
-    """sentencia_mientras : WHILE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK
+    """sentencia_mientras : WHILE LPAREN condicion RPAREN LBLOCK lista_sentencia RBLOCK
     """
 def p_sentencia_para(p):
     "sentencia_para : FOR LPAREN ID EQUAL expression SEMICOLON expression RPAREN LBLOCK lista_sentencia RBLOCK"
 
 def p_sentencia_si(p):
-    """sentencia_si : IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK
-                    | IF LPAREN RPAREN LBLOCK lista_sentencia RBLOCK ELSE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK"""
+    """sentencia_si : IF LPAREN condicion RPAREN LBLOCK lista_sentencia RBLOCK
+                    | IF LPAREN condicion RPAREN LBLOCK lista_sentencia RBLOCK ELSE LPAREN RPAREN LBLOCK lista_sentencia RBLOCK"""
+
+def p_condiciones(p):
+    """condiciones : LESS
+                    | GREATER
+                    | DEQUAL
+                    | DISTINT
+                    | LESSEQUAL
+                    | GREATEREQUAL """
+
+def p_condicion(p):
+    "condicion : expression condiciones expression"
 
 def p_sentencia(p):
     """sentencia : sentencia_mientras

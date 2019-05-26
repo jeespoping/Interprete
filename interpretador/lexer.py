@@ -8,7 +8,6 @@ tokens = (
     # Palabras Reservadas
     'COUT',
     'CIN',
-    'ENDL',
     'ELSE',
     'IF',
     'INT',
@@ -18,11 +17,8 @@ tokens = (
     'FOR',
 
     # Symbolos
-    'POINT',
     'PLUS',
-    'PLUSPLUS',
     'MINUS',
-    'MINUSMINUS',
     'TIMES',
     'DIVIDE',
     'LESS',
@@ -33,14 +29,10 @@ tokens = (
     'DEQUAL',
     'DISTINT',
     'SEMICOLON',
-    'COMMA',
     'LPAREN',
     'RPAREN',
-    'LBRACKET',
-    'RBRACKET',
     'LBLOCK',
     'RBLOCK',
-    'QUOTES',
 
 
     #Otros
@@ -53,22 +45,16 @@ tokens = (
 
 t_PLUS = r'\+'
 t_MINUS = r'-'
-t_MINUSMINUS = r'\-\-'
-t_POINT = r'\.'
 t_TIMES = r'\*'
 t_DIVIDE = r'/'
 t_EQUAL = r'='
 t_LESS = r'<'
 t_GREATER = r'>'
 t_SEMICOLON = ';;'
-t_COMMA = r','
 t_LPAREN = r'\('
 t_RPAREN = r'\)'
-t_LBRACKET = r'\['
-t_RBRACKET = r'\]'
 t_LBLOCK = r'{'
 t_RBLOCK = r'}'
-t_QUOTES = r'\"'
 
 def t_COUT(t):
     r'impr'
@@ -78,11 +64,6 @@ def t_COUT(t):
 def t_CIN(t):
     r'entr'
     return t
-
-def t_ENDL(t):
-    r'salta'
-    return t
-
 
 def t_ELSE(t):
     r'nombe'
@@ -128,10 +109,6 @@ def t_ID(t):
 def t_STRING(t):
 #expresion RE para reconocer los String
     r'\"?(\w+ \ *\w*\d* \ *)\"?'
-    return t
-
-def t_PLUSPLUS(t):
-    r'\+\+'
     return t
 
 
