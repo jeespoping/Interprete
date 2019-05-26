@@ -1,6 +1,9 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import scrolledtext as st
+from tkinter import PhotoImage
+from tkinter import Tk
+from PIL import Image, ImageTk
 import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
@@ -12,8 +15,14 @@ class Aplicacion:
     def __init__(self):
         self.ventana1=tk.Tk()
         self.ventana1.config(bg = "sky blue")
-        self.ventana1.geometry("1000x460")
+        self.image2 = Image.open('marco.jpg')
+        self.image1 = ImageTk.PhotoImage(self.image2)
+        self.w = self.image1.width()
+        self.h = self.image1.height()
+        self.ventana1.geometry('%dx%d+0+0' % (self.w, self.h))
         self.ventana1.resizable(width=False , height= False)
+        self.label1 = Label(self.ventana1, image=self.image1)
+        self.label1.place(x=0, y=0, relwidth=1, relheight=1)
         self.ventana1.title("IDE Lopez")
         self.agregar_menu()
         self.agregar_campo_de_trabajo()
