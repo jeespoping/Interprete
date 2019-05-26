@@ -167,7 +167,7 @@ def analizador(direccion):
             parser.parse(data, tracking=True)
             return ERROR
         except NameError:
-            return ("ERROR!!")
+            return ("Compilado pero no hay nada")
     except (PermissionError , FileNotFoundError):
         return ("no hay ruta!!")
 
