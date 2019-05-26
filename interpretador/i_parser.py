@@ -118,10 +118,11 @@ def p_lista_sentencia(p):
 
 def p_expression_id(p):
     "expression : ID"
+    global ERROR
     try:
         p[0] = names[p[1]]
     except LookupError:
-        print("Undefined id '%s'" % p[1])
+        ERROR = ("id no definida '%s'" % p[1])
         p[0] = 0
 
 #def p_error(p):
