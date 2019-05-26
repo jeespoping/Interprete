@@ -43,6 +43,7 @@ def p_statement_assign(p):
 
 def p_statement_entrada(p):
     'statement : CIN ID SEMICOLON'
+    names[p[2]] = 0
 
 def p_statement_assign_str(p):
     'statement : STR ID EQUAL STRING SEMICOLON'
@@ -50,6 +51,10 @@ def p_statement_assign_str(p):
 
 def p_statement_expr(p):
     'statement : COUT expression SEMICOLON'
+    #print(p[2])
+
+def p_statement_expr_str(p):
+    'statement : COUT STRING SEMICOLON'
     #print(p[2])
 
 def p_expression_binop(p):
