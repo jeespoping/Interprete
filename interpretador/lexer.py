@@ -1,7 +1,6 @@
-0
 import ply.lex as lex
 import os
-
+ERROR2 = ""
 # lista de tokens
 tokens = (
 
@@ -149,7 +148,9 @@ def t_comments_C99(t):
 
 
 def t_error(t):
-    print (("Error Lexico: " + str(t.value[0])))
+    global ERROR2
+    print("Error Lexico: " + str(t.value[0]))
+    ERROR2 = ("Error Lexico: " + str(t.value[0]))
     t.lexer.skip(1)
 
 
@@ -164,10 +165,11 @@ def test(data, lexer):
 
 lexer = lex.lex()
 
-def Analizador_lexico():
-    a = input("direccion: ")
-    if ( os.path.exists (a)):
-        f = open(a)
+def Analizador_lexico(direccion):
+    global ERROR2
+    ERROR2 = ""
+    if ( os.path.exists (direccion)):
+        f = open(direccion)
         data = f.read()
         f.close()
         #Build lexer and try on
@@ -175,6 +177,8 @@ def Analizador_lexico():
         test(data, lexer)
     else:
         print ("El archivo no existe")
+
+    return ERROR2
 
 
 # Test

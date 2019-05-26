@@ -1,13 +1,12 @@
 from tkinter import *
 import tkinter as tk
 from tkinter import scrolledtext as st
-from tkinter import PhotoImage
-from tkinter import Tk
 from PIL import Image, ImageTk
 import sys
 from tkinter import filedialog as fd
 from tkinter import messagebox as mb
 from i_parser import analizador
+from lexer import Analizador_lexico
 
 class Aplicacion:
     nombrearch1 = ""
@@ -92,7 +91,9 @@ class Aplicacion:
     def compilar(self):
         self.scrolledtext2["state"]=NORMAL
         if self.bandera == False:
-            resultado = str(analizador(self.nombrearch1))
+            resultado = str(Analizador_lexico(self.nombrearch1))
+            if (resultado == ""):
+                resultado = str(analizador(self.nombrearch1))
             self.scrolledtext2.insert("1.0", resultado)
             self.bandera = True
             #print(analizador(self.nombrearch1))
